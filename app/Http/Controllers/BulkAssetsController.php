@@ -75,6 +75,7 @@ class BulkAssetsController extends Controller
         $assets = array_keys($request->input('ids'));
 
         if (($request->filled('purchase_date'))
+            || ($request->filled('expected_checkin'))
             || ($request->filled('purchase_cost'))
             || ($request->filled('supplier_id'))
             || ($request->filled('order_number'))
@@ -89,6 +90,7 @@ class BulkAssetsController extends Controller
                 $this->update_array = [];
 
                 $this->conditionallyAddItem('purchase_date')
+                    ->conditionallyAddItem('expected_checkin')
                     ->conditionallyAddItem('model_id')
                     ->conditionallyAddItem('order_number')
                     ->conditionallyAddItem('requestable')
