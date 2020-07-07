@@ -310,6 +310,7 @@ class AssetsController extends Controller
         $asset->warranty_months = $request->input('warranty_months', null);
         $asset->purchase_cost = Helper::ParseFloat($request->input('purchase_cost', null));
         $asset->purchase_date = $request->input('purchase_date', null);
+        $asset->expected_checkin = $request->input('expected_checkin', null);
         $asset->supplier_id = $request->input('supplier_id', null);
 
         // If the box isn't checked, it's not in the request at all.
