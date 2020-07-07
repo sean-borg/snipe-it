@@ -59,6 +59,17 @@
   @include ('partials.forms.edit.serial', ['translated_serial' => trans('admin/hardware/form.serial')])
   @include ('partials.forms.edit.name', ['translated_name' => trans('admin/hardware/form.name')])
   @include ('partials.forms.edit.purchase_date')
+  <!-- Expected Checkin Date -->
+  <div class="form-group {{ $errors->has('expected_checkin') ? ' has-error' : '' }}">
+     <label for="expected_checkin" class="col-md-3 control-label">{{ trans('admin/hardware/form.expected_checkin') }}</label>
+     <div class="input-group col-md-3">
+          <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd"  data-autoclose="true">
+              <input type="text" class="form-control" placeholder="{{ trans('general.select_date') }}" name="expected_checkin" id="expected_checkin" value="{{ Input::old('expected_checkin', ($item->expected_checkin) ? $item->expected_checkin->format('Y-m-d') : '') }}">
+              <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+         </div>
+         {!! $errors->first('expected_checkin', '<span class="alert-msg" aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i> :message</span>') !!}
+     </div>
+  </div>
   @include ('partials.forms.edit.supplier-select', ['translated_name' => trans('general.supplier'), 'fieldname' => 'supplier_id'])
   @include ('partials.forms.edit.order_number')
     <?php
